@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Container, IfEmpty } from "./App.styled"; 
+import { Container, IfEmpty, DefaultButton } from "./App.styled"; 
 import { ContactsForm } from "./ContactsForm/ContactsForm";
 import { ContactsFormList } from './ContactsFormList/ContactsFormList';
 import { Filter } from './Filter/Filter';
@@ -22,7 +22,8 @@ componentDidMount() {
   
   const defaultContacts = this.state.contacts;
   console.log('Default Contacts', defaultContacts);
-
+  this.setState({ defaultContacts: defaultContacts });
+  
   const actualContacts = localStorage.getItem('contacts');
   
   if (actualContacts !== null) {
@@ -85,7 +86,19 @@ componentDidUpdate(prevState) {
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
   };
-
+//=======HW3 Extra function for Default Contacts==================================
+  addDefaultContacts = () => {
+        
+    console.log('Default Contacts Clicked &:', this.state.defaultContacts );
+    
+    setTimeout(() => {
+    this.setState({ contacts: this.state.defaultContacts });
+  }, 2000);
+    
+    Notiflix.Notify.failure(`Really??? :)`);
+      return;
+  };
+//================================================================================
   render() {
     const { filter, contacts } = this.state;
     return (
@@ -101,7 +114,11 @@ componentDidUpdate(prevState) {
             onDelete={this.deleteContact}
           />
         ) : (
-          <IfEmpty> Phonebook is empty</IfEmpty>
+            <><IfEmpty> Phonebook is empty</IfEmpty>
+              <DefaultButton type='button' onClick={this.addDefaultContacts}>
+                Click to Add Default Contacts
+              </DefaultButton>
+            </>
         )}
         
     </Container>);

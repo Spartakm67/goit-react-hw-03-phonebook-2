@@ -16,3 +16,16 @@ export const IfEmpty = styled.p`
    font-size: 25px;
    font-weight: 500;
 `;
+
+export const DefaultButton = styled.button`
+  width: 150px;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 2px 0;
+  border: 1px solid gray;
+    &:hover {
+    background-color: #bbe4e9;
+    font-weight: 700;
+    color: #f95959;
+  }
+`;
