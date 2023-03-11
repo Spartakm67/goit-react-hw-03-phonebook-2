@@ -32,13 +32,9 @@ componentDidMount() {
     this.setState({ contacts: parsedContacts });
     return;
   } 
-// if (parsedContacts) {
-// this.setState({contacts: parsedContacts});
-//  };
-// this.setState({ contacts: defaultContacts });
 };
 
-componentDidUpdate(prevState) {
+componentDidUpdate(_, prevState) {
 
   if (this.state.contacts !== prevState.contacts) {
     console.log('Contacts Updated');
