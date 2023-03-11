@@ -31,7 +31,7 @@ componentDidMount() {
     console.log('Parsed Contacts', parsedContacts);
     this.setState({ contacts: parsedContacts });
     return;
-  } 
+  }  
 };
 
 componentDidUpdate(_, prevState) {
